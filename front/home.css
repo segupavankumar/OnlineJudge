@@ -82,8 +82,23 @@ body{
 
 
 
+.hide{
+    display: none;
+}
 
-
-
+.Question-view{
+    justify-content: center;
+    /* margin: 0; */
+    margin-top: 5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    width : 70%;
+    box-shadow: 5px 10px 5px #d1cfcf;
+    padding: 20px;
+}
 /* CSS */
 
+.submit{
+    margin:50px;
+    margin-left: 450px;
+}
