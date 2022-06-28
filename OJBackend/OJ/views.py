@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+
 
 
 def loginUser(request):
@@ -19,6 +19,7 @@ def loginUser(request):
             messages.info(request, 'Username or password is incorrect')
             return render(request, 'login.html')
     return render(request,'login.html')
+    # login function
 
 def register(request):
     if request.method == 'POST':
