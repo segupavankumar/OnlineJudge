@@ -1,0 +1,28 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlineJudge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'main.css'%}">
+</head>
+<body>
+    {%block content%}
+    <div class="nav">
+        <ul class = 'left'>
+            <li><i class="fa fa-square" style="font-size:40px;color:rgb(255, 255, 255)">OnlineJudge</i></li>
+        </ul>
+        <ul class="right">
+            <li><a href= '{% url "login"%}'><h3>Login</h3></a></li>
+            <li><a href= '{% url "register"%}'><h3>Register</h3></a></li>
+
+        </ul>
+    </div>
+    
+    {%endblock%}
+    
+</body>
+</html>
