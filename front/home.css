@@ -102,3 +102,11 @@ body{
     margin:50px;
     margin-left: 450px;
 }
+
+.left{
+    align-items: left
+}
+
+.right{
+    align-items: right
+}
