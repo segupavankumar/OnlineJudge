@@ -6,4 +6,4 @@ from OJ.models import User, Problem, TestCases, Submissions
 class ProblemSerializer(ModelSerializer):
     class Meta:
         model = Problem
-        fields = ('id','title', 'description', 'status', 'time_limit', 'memory_limit', 'score')
+        fields = ('id','title', 'description', 'status', 'time_limit', 'memory_limit', 'score','difficulty')

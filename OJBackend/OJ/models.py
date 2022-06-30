@@ -28,6 +28,7 @@ class Problem(models.Model):
     title = models.CharField(max_length=300)
     description = FroalaField()
     status = models.CharField(max_length=10, default='Unsolved',validators=[check,])
+    difficulty = models.CharField(max_length=10, default='Easy')
     time_limit = models.IntegerField(default=1)
     memory_limit = models.IntegerField(default=128)
     score = models.FloatField(default=0, validators=[score_check])
@@ -40,8 +41,8 @@ class Problem(models.Model):
 
 class TestCases(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
-    input = FroalaField()
-    output = FroalaField()
+    input = models.TextField()
+    output = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
 

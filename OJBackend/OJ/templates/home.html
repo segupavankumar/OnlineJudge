@@ -13,18 +13,21 @@
         </ul>
 </div>
 <div class="Question-list">
-
+    <h1>List Of Questions</h1>
     {% for question in data %}
         <a href="/">
             <div class="Question">
                 <ul>
-                    <li>
+                    <li style = "width:300%;">
                         <h3 class="question-title">{{question.title}}</h3>
+                    </li>
+                    <li>
+                        <h4>Difficulty : {{question.difficulty}}</h4>
                     </li>
                     <!-- <li>
                         <h3>status</h3>
                     </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
+                    <li style = "width:auto;display:flex; align-items:right">
                         <a href = "{% url 'problem_view' question.id %}">
                             <button class="button button1" role="button">Solve Challange</button>
                         </a>
