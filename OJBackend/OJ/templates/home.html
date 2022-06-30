@@ -13,150 +13,28 @@
         </ul>
 </div>
 <div class="Question-list">
+
+    {% for question in data %}
         <a href="/">
             <div class="Question">
                 <ul>
                     <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
+                        <h3 class="question-title">{{question.title}}</h3>
                     </li>
                     <!-- <li>
                         <h3>status</h3>
                     </li> -->
                     <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
+                        <a href = "{% url 'problem_view' question.id %}">
+                            <button class="button button1" role="button">Solve Challange</button>
+                        </a>
                     </li>
                     
                 </ul>
             </div>
             
         </a>
-        <a href="/">
-            <div class="Question">
-                <ul>
-                    <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
-                    </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
-                    </li>
-                    
-                </ul>
-            </div>
-            
-        </a>
-        <a href="/">
-            <div class="Question">
-                <ul>
-                    <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
-                    </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
-                    </li>
-                    
-                </ul>
-            </div>
-            
-        </a>
-        <a href="/">
-            <div class="Question">
-                <ul>
-                    <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
-                    </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
-                    </li>
-                    
-                </ul>
-            </div>
-            
-        </a>
-        <a href="/">
-            <div class="Question">
-                <ul>
-                    <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
-                    </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
-                    </li>
-                    
-                </ul>
-            </div>
-            
-        </a>
-        <a href="/">
-            <div class="Question">
-                <ul>
-                    <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
-                    </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
-                    </li>
-                    
-                </ul>
-            </div>
-            
-        </a>
-        <a href="/">
-            <div class="Question">
-                <ul>
-                    <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
-                    </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
-                    </li>
-                    
-                </ul>
-            </div>
-            
-        </a>
-        <a href="/">
-            <div class="Question">
-                <ul>
-                    <li>
-    
-                        <h3 class="question-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, veritatis. Ducimus beatae</h3>
-                    </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style="padding-right: 40px; padding-top:10px">
-                        <button class="button button1" role="button">Solve Challange</button>
-                    </li>
-                    
-                </ul>
-            </div>
-            
-        </a>
+    {% endfor %}
         
     </div>
 {%endblock%}

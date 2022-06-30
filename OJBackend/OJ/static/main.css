@@ -66,8 +66,8 @@ body{
 
 .Question ul{
     display: flex;
-    justify-content:space-around;
-    list-style: none;
+    justify-content:space-between;
+    list-style-type: none;
 }
 
 .question-title{

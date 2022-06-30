@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block content%}
+<div class="nav">
+        <ul class = 'left'>
+            <li><i class="fa fa-square" style="font-size:40px;color:rgb(255, 255, 255)">OnlineJudge</i></li>
+            <li><a href= '{% url "home"%}'><h3>Home</h3></a></li>
+        </ul>
+        <ul class="right">
+            <li><a href= '{% url "logout"%}'><h3>Logout</h3></a></li>
+            <!-- <li><a href= '{% url "register"%}'><h3>Register</h3></a></li> -->
+            
+        </ul>
+</div>
+<div class="Question-view">
+    <div class="Question-title">
+        <h1>{{data.title}}</h1><br>
+    </div>
+    <div class="Question-content">
+        <p>{{data.description|safe}}</p>
+    </div>
+        <button class="button button1 submit">Submit</button>
+    </div>
+{%endblock%}
