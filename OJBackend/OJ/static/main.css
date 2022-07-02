@@ -37,7 +37,7 @@ body{
   }
 .nav ul{
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
     list-style: none;
   }
 .nav ul li{
@@ -57,9 +57,9 @@ body{
 .Question{
     width: 100%;
     box-shadow: 5px 10px 5px #d1cfcf;
-    /* height: 100px;
-    max-height: 150px; */
-    height: fit-content;
+    height: 100px;
+    /* max-height: 150px; */
+    /* height: fit-content; */
     margin-bottom :30px;
     /* display: ; */
 }
@@ -70,9 +70,7 @@ body{
     list-style-type: none;
 }
 
-.question-title{
-    width: 80%
-}
+
 a{
     text-decoration: none;
     color: #fff;

@@ -66,13 +66,12 @@ body{
 
 .Question ul{
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
     list-style: none;
+    
 }
 
-.question-title{
-    width: 80%
-}
+
 
 .Question-list a{
     text-decoration: none;

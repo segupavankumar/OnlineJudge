@@ -18,6 +18,9 @@ class User(AbstractUser):
     score = models.FloatField(default=0, validators=[score_check])
     solved = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ['-score']
+
     def __str__(self):
         return self.username
 
@@ -47,12 +50,13 @@ class TestCases(models.Model):
     date_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.problem.title
+        return self.problem.title + 'testcases set ' + str(self.id)
 
 class Submissions(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     result = models.CharField(max_length=200)
+    previous_submission = models.TextField(null=True, blank=True)
     
 

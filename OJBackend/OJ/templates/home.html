@@ -18,16 +18,13 @@
         <a href="/">
             <div class="Question">
                 <ul>
-                    <li style = "width:300%;">
+                    <li style = "width:auto;">
                         <h3 class="question-title">{{question.title}}</h3>
                     </li>
-                    <li>
+                    <li style = "width:auto;color:green">
                         <h4>Difficulty : {{question.difficulty}}</h4>
                     </li>
-                    <!-- <li>
-                        <h3>status</h3>
-                    </li> -->
-                    <li style = "width:auto;display:flex; align-items:right">
+                    <li style = "width:auto">
                         <a href = "{% url 'problem_view' question.id %}">
                             <button class="button button1" role="button">Solve Challange</button>
                         </a>
