@@ -22,3 +22,8 @@ class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ('id','username','email','score','solved')
+
+class CodeSerializer(ModelSerializer):
+    code = serializers.CharField()
+    problem_id = serializers.IntegerField()
+    user_id = serializers.IntegerField()

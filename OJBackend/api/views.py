@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 # from yaml import serialize
-from .serializers import ProblemSerializer, TestCasesSerializer, SubmissionsSerializer, UserSerializer
+from .serializers import ProblemSerializer, TestCasesSerializer, SubmissionsSerializer, UserSerializer, CodeSerializer
 from OJ.models import Problem, TestCases, Submissions, User
 from django.http import HttpResponse
 # Create your views here.
@@ -41,6 +41,7 @@ def ListOfSubmissionsOfProblem(request, id):
         serializer = SubmissionsSerializer(Submissions.objects.filter(problem=problem), many=True)
         return Response(serializer.data)
 
+@api_view(['GET'])
 def ListOfSubmissionsOfUser(request,id):
     try:
         user = User.objects.get(id=id)
@@ -50,3 +51,13 @@ def ListOfSubmissionsOfUser(request,id):
         serializer = SubmissionsSerializer(Submissions.objects.filter(user=user), many=True)
         return Response(serializer.data)
 
+
+@api_view(['POST'])
+def Code_post(request):
+    if request.method == 'POST':
+        serializer = CodeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            print(serializer.data)
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
