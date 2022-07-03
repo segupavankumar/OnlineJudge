@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static%}
+
+{% block content%}
+<div class="nav">
+    <ul class = 'left'>
+        <li><i class="fa fa-square" style="font-size:40px;color:rgb(255, 255, 255)">OnlineJudge</i></li>
+        <li><a href= '{% url "home"%}'><h3>Home</h3></a></li>
+    </ul>
+    <ul class="right">
+        <li><a href= '{% url "logout"%}'><h3>Logout</h3></a></li>
+        <!-- <li><a href= '{% url "register"%}'><h3>Register</h3></a></li> -->
+        
+    </ul>
+</div>
+<div class="container">
+    <div class="header">IDE for Online Judge</div>
+    <div class="language-option">
+            <label for="languages">Choose a Language :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select id="languages" class="languages" onchange="changeLanguage()">
+                <option value="c">C</option>
+                <option value="cpp">C++</option>
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+            </select>
+    </div>
+
+    <div class="editor" id="editor"></div>
+
+    <div class="button-container">
+        <button class="btn" onclick="executeCode()"> Run Code</button>
+    </div>
+
+</div>
+<!-- <div class="output"></div> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{%static 'js/lib/ace.js'%}"></script>
+<script src="{%static 'js/lib/theme-twilight.js'%}"></script>
+<script src="{%static 'js/main.js'%}" text="text/javascript"></script>
+{%endblock%}

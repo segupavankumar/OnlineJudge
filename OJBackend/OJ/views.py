@@ -47,3 +47,7 @@ def home(request):
 def problem_view(request,id):
     data = requests.get(f'http://127.0.0.1:8000/api/v1/problems/{id}?format=json').json()
     return render(request,'problem_view.html',{'data':data})
+
+
+def ide(request):
+    return render(request,'ide.html')

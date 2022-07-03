@@ -19,6 +19,8 @@
     <div class="Question-content">
         <p>{{data.description|safe}}</p>
     </div>
-        <button class="button button1 submit">Submit</button>
+        <a href = "{% url 'ide' %}">
+            <button class="button button1 submit">Submit</button>
+        </a>
     </div>
 {%endblock%}
