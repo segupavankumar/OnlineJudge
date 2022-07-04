@@ -19,7 +19,7 @@
     <div class="Question-content">
         <p>{{data.description|safe}}</p>
     </div>
-        <a href = "{% url 'ide' %}">
+        <a href = "{% url 'ide' data.id %}">
             <button class="button button1 submit">Submit</button>
         </a>
     </div>

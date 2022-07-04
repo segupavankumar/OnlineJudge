@@ -58,5 +58,11 @@ class Submissions(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     result = models.CharField(max_length=200)
     previous_submission = models.TextField(null=True, blank=True)
+
+class Code(models.Model):
+    code = models.TextField()
+    language = models.CharField(max_length=10)
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 

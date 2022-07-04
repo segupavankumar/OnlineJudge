@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
-from OJ.models import User, Problem, TestCases, Submissions
+from OJ.models import User, Problem, TestCases, Submissions,Code
 
 
 class ProblemSerializer(ModelSerializer):
@@ -24,6 +24,9 @@ class UserSerializer(ModelSerializer):
         fields = ('id','username','email','score','solved')
 
 class CodeSerializer(ModelSerializer):
-    code = serializers.CharField()
     problem_id = serializers.IntegerField()
     user_id = serializers.IntegerField()
+
+    class Meta:
+        model = Code
+        fields = ('language', 'code', 'problem_id', 'user_id')

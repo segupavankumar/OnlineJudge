@@ -19,3 +19,26 @@ function changeLanguage() {
     else if(language == 'python')editor.session.setMode("ace/mode/python");
     else if(language == 'javascipt')editor.session.setMode("ace/mode/javascript");
 }
+
+
+function executeCode() {
+
+    $.ajax({
+
+        url: "http://127.0.0.1:8000/api/v1/code-post",
+
+        method: "POST",
+
+        data: {
+            "csrfmiddlewaretoken": "{{ csrf_token }}",
+            "language": $("#languages").val(),
+            "code": editor.getSession().getValue(),
+            "problem_id": 1,
+            "user_id": 1,
+        },
+
+        success: function(response) {
+            $(".output").text(response)
+        }
+    })
+}

@@ -6,7 +6,7 @@ from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 import requests
 
-
+from django.views.decorators.csrf import csrf_protect
 
 def loginUser(request):
     if request.method == 'POST':
@@ -46,8 +46,10 @@ def home(request):
 @login_required(login_url='login')
 def problem_view(request,id):
     data = requests.get(f'http://127.0.0.1:8000/api/v1/problems/{id}?format=json').json()
-    return render(request,'problem_view.html',{'data':data})
 
+    return render(request,'problem_view.html',{'data':data,'User':User})
 
-def ide(request):
-    return render(request,'ide.html')
+@login_required(login_url='login')
+def ide(request,problem_id):
+    user_id = 1
+    return render(request,'ide.html',{'problem_id':problem_id,'user_id':user_id})
