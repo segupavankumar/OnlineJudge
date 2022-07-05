@@ -64,6 +64,6 @@ def Code_post(request):
             user = User.objects.get(id=serializer.data['user_id'])
             problem = Problem.objects.get(id=serializer.data['problem_id'])
             output = run_code(serializer.data['code'],serializer.data['language'],problem.id,user.id)
-            # print(output)
+            print(output)
             return Response(output, status=201)
         return Response(serializer.errors, status=400)
