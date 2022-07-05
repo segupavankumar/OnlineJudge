@@ -1,7 +1,8 @@
 import subprocess
 import os
-
-def run_python(code,problem_id):
+from OJ.models import User,Problem,Submissions,TestCases
+from django.http import HttpResponse
+def run_python(code,test_case=None):
 
     # Create a file with the code
     file_name = 'code.py'
@@ -9,10 +10,26 @@ def run_python(code,problem_id):
     file.write(code)
     file.close()
 
+    if test_case:
+        t_file = open('test_case.txt','w')
+        t_file.write(test_case.input)
+        t_file.close()
+
+        process = subprocess.Popen(['python', file_name, "<",t_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        os.remove('test_case.txt')
+
+        if test_case.output == stdout.decode('utf-8'):
+            return True
+        else:
+            return False
+
     # Run the code
-    process = subprocess.Popen(['python', file_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate()
+    else:
+        process = subprocess.Popen(['python', file_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
     os.remove(file_name)
+    
 
     # print(stdout.decode('utf-8'))
     if stdout:
@@ -83,13 +100,26 @@ def run_javascript(code, problem_id):
     # print(stdout.decode('utf-8'))
     return stdout.decode('utf-8')
 
-def run_code(code, language, problem_id,user_id):
+def run_code(code, language,test =None):
     if language == 'c':
-        return run_c(code, problem_id)
+        return run_c(code, test)
     elif language == 'cpp':
-        return run_cpp(code, problem_id)
+        return run_cpp(code, test)
     elif language == 'python':
-        return run_python(code, problem_id)
+        return run_python(code, test)
     elif language == 'javascript':
-        return run_javascript(code, problem_id)
+        return run_javascript(code, test)
+
+
+def evaluation(code,language,problem_id,user_id):
+    try:
+        problem = Problem.objects.get(id=problem_id)
+        user = User.objects.get(id=user_id)
+    except Problem.DoesNotExist:
+        return HttpResponse(status=404)
+
+    test_cases = TestCases.objects.filter(problem=problem,many = True)
+
+    for test in test_cases:
+        result = run_code(code, language,test)
 
