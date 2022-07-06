@@ -34,13 +34,13 @@
 </div>
 
 <div class = "footer">
-    <div class="input">
+    <div class="input" id = "input">
         <h1> Input</h1>
-        <textarea rows="10" cols="150" name="comment" form="usrform"></textarea>
+        <textarea rows="10" cols="150" name="comment" form="usrform" id = 'msg'></textarea>
     </div>
     <h1> Out Put</h1>
     <div class="output">
-        {% comment %} <textarea rows="10" cols="150" name="comment" form="usrform"></textarea> {% endcomment %}
+        <textarea rows="10" cols="150" name="comment" form="usrform" id = 'outmsg'></textarea>
     </div>
 </div>
 
@@ -73,7 +73,8 @@
     
     
     function executeCode() {
-    
+        
+        console.log($("textarea#msg").val())
         $.ajax({
     
             url: "http://127.0.0.1:8000/api/v1/code-post",
@@ -86,11 +87,13 @@
                 "code": editor.getSession().getValue(),
                 "problem_id": {{problem_id}},
                 "user_id": {{user_id}},
+                "input": $("textarea#msg").val()
             },
+            
 
             success: function(response) {
-                var t = document.createTextNode(response);
-                $(".output").append(t);
+                // let r = JSON.stringify(response)
+                $("textarea#outmsg").val(JSON.stringify(response.result), null, 2)
             }
     
             

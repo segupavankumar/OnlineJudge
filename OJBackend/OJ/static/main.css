@@ -225,7 +225,7 @@ a:hover {color: #638def;}
   
   .output {
     padding: 4px;
-    border: 2px solid gray;
+    /* border: 2px solid gray; */
     min-height: 100px;
     width: 99%;
     resize: none;
@@ -251,4 +251,5 @@ textarea{
     width:100%;
     align-items: right;
     margin-bottom: 20px;
+    border: none;
 }
