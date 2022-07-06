@@ -23,10 +23,18 @@ class UserSerializer(ModelSerializer):
         model = User
         fields = ('id','username','email','score','solved')
 
-class CodeSerializer(ModelSerializer):
+class SubmitCodeSerializer(ModelSerializer):
     problem_id = serializers.IntegerField()
     user_id = serializers.IntegerField()
 
     class Meta:
         model = Code
         fields = ('language', 'code', 'problem_id', 'user_id')
+ 
+ 
+class RunCodeSerializer(ModelSerializer):
+    runtime = serializers.FloatField()
+    result = serializers.CharField()
+    class Meta:
+        model = Code
+        fields = ('runtime','result')

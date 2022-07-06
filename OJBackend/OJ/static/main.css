@@ -231,3 +231,24 @@ a:hover {color: #638def;}
     resize: none;
   
   }
+
+.footer{
+    width: 80%;
+    margin: auto;
+    margin-left: 170px;
+}
+
+.input{
+    
+    width:100%;
+    align-items: left;
+}
+textarea{
+    resize: none;
+}
+
+.output{
+    width:100%;
+    align-items: right;
+    margin-bottom: 20px;
+}

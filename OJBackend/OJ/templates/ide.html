@@ -32,7 +32,17 @@
     </div>
 
 </div>
-<div class="output"></div>
+
+<div class = "footer">
+    <div class="input">
+        <h1> Input</h1>
+        <textarea rows="10" cols="150" name="comment" form="usrform"></textarea>
+    </div>
+    <h1> Out Put</h1>
+    <div class="output">
+        {% comment %} <textarea rows="10" cols="150" name="comment" form="usrform"></textarea> {% endcomment %}
+    </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{%static 'js/lib/ace.js'%}"></script>
@@ -79,7 +89,8 @@
             },
 
             success: function(response) {
-                $(".output").text(response);
+                var t = document.createTextNode(response);
+                $(".output").append(t);
             }
     
             
