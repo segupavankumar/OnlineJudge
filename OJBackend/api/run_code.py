@@ -24,14 +24,14 @@ def run_python(code,test_case=None):
         else:
             return False
 
-    # Run the code
+    # Run the cod
     else:
         process = subprocess.Popen(['python', file_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = process.communicate()
     os.remove(file_name)
     
 
-    # print(stdout.decode('utf-8'))
+    # print(stdout.decode('utf-8')
     if stdout:
         return stdout.decode('utf-8')
     else:
@@ -48,7 +48,7 @@ def run_c(code, problem_id):
     file.close()
 
 
-    # Run the code
+    # Run the cod
     # process = subprocess.Popen(['g++', file_name, '-o', 'code'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     # stdout, stderr = process.communicate()
 

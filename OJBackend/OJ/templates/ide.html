@@ -92,8 +92,10 @@
             
 
             success: function(response) {
-                // let r = JSON.stringify(response)
-                $("textarea#outmsg").val(JSON.stringify(response.result), null, 2)
+                let r = document.getElementById("outmsg");
+                r.innerHTML = "Run Time =" + response.run_time + " ms" + "<br>" + response.result;
+                
+                //$("output").append(r)
             }
     
             

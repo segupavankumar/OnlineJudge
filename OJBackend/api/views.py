@@ -65,7 +65,8 @@ def Code_post(request):
             user = User.objects.get(id=serializer.data['user_id'])
             problem = Problem.objects.get(id=serializer.data['problem_id'])
             output = Run(serializer.data['code'],serializer.data['language'],serializer.data['input'])
-            print(output,"output")
+            # print(output,"output")
+            output['result'] = output['result'].replace('\n','<br>')
             return Response(output, status=201)
         return Response(serializer.errors, status=400)
 
