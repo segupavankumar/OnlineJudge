@@ -24,8 +24,8 @@ class UserSerializer(ModelSerializer):
         fields = ('id','username','email','score','solved')
 
 class CodeSerializer(ModelSerializer,Serializer):
-    problem_id = serializers.IntegerField()
-    user_id = serializers.IntegerField()
+    problem_id = serializers.IntegerField( allow_null=True)
+    user_id = serializers.IntegerField(allow_null=True)
     input = serializers.CharField(allow_blank=True, allow_null=True)
 
     class Meta:
@@ -33,9 +33,4 @@ class CodeSerializer(ModelSerializer,Serializer):
         fields = ('language', 'code', 'problem_id', 'user_id','input')
  
  
-class RunCodeSerializer(ModelSerializer):
-    runtime = serializers.FloatField()
-    result = serializers.CharField()
-    class Meta:
-        model = Code
-        fields = ('runtime','result')
+
