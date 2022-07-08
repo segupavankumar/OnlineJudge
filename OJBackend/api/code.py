@@ -16,7 +16,7 @@ def run_python(code,input_):
 
     os.remove(file_name)
     
-    print(stdout)
+    # print(stdout)
     if stdout:
         return stdout
     else:
@@ -30,19 +30,23 @@ def run_c(code,input_):
     file.write(code)
     file.close()
 
-    subprocess.run(["g++", file_name],input = input_,encoding="utf-8")
-    f = open('a.txt','w')
-    subprocess.run("a",stdout=f)
-    f.close()
-    f = open('a.txt', 'r')
-    output = f.read()
-    f.close()
-    os.remove('a.txt') 
+    subprocess.run(["gcc", file_name])
+    # f = open('a.txt','w')
+    f = subprocess.run("a",input = input_,encoding="utf-8",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    # print(f)
+    # f.close()
+    # f = open('a.txt', 'r')
+    # output = f.stdout
+    # f.close()
+    # os.remove('a.txt') 
     os.remove(file_name)
     os.remove('a.exe')
 
     # print(stdout.decode('utf-8'))
-    return output
+    if f.stdout:
+        return f.stdout
+    else:
+        return f.stderr
 
 def run_cpp(code,input_):
     # Create a file with the code
@@ -53,20 +57,22 @@ def run_cpp(code,input_):
 
     # Run the code
     process = subprocess.run(['g++', file_name] )
-    f = open('a.txt','w')
-    subprocess.run("a",stdout=f)
-    f.close()
-    f = open('a.txt', 'r')
-    output = f.read()
-    f.close()
-    os.remove('a.txt') 
+    # f = open('a.txt','w')
+    f = subprocess.run("a",input = input_,encoding="utf-8",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    # f.close()
+    # f = open('a.txt', 'r')
+    # output = f.read()
+    # f.close()
+    # os.remove('a.txt') 
     os.remove(file_name)
     os.remove('a.exe')
 
     # print(stdout.decode('utf-8'))
-    return output
+    if f.stdout:
+        return f.stdout
+    else:
+        return f.stderr
 def run_javascript(code,input_):
-    # Create a file with the code
     file_name = 'code.js'
     file = open(file_name, 'w+')
     file.write(code)
@@ -80,7 +86,7 @@ def run_javascript(code,input_):
 
     if stdout:
         s = stdout
-        s.replace('\n','<br>')
+        # s.replace('\n','<br>')
         return s
     else:
         return stderr

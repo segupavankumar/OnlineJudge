@@ -41,7 +41,7 @@
     </div>
     <h1> Out Put</h1>
     <div class="output">
-        <textarea rows="10" cols="150" name="comment" form="usrform" id = 'outmsg'></textarea>
+        <textarea rows="10" cols="150" name="comment" form="usrform" id = 'outmsg' readonly></textarea>
     </div>
 </div>
 
@@ -94,7 +94,7 @@
 
             success: function(response) {
                 let r = document.getElementById("outmsg");
-                r.innerHTML = "Run Time =" + response.run_time  + "<br>" + "Result : " + "<br>" +response.result;
+                r.innerHTML = "Run Time =" + response.run_time  + '\n'+ response.result;
                 
                 //$("output").append(r)
             }
