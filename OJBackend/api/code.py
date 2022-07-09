@@ -1,6 +1,6 @@
 import subprocess
 import os
-from OJ.models import User,Problem,Submissions,TestCases
+from OJ.models import User,Problem,Submissions,TestCases,Submissions
 from django.http import HttpResponse
 
 import time
@@ -18,7 +18,7 @@ def run_python(code,input_):
     
     # print(stdout)
     if stdout:
-        return stdout
+        return stdout[:-1]
     else:
         return stderr
 
@@ -85,7 +85,7 @@ def run_javascript(code,input_):
     
 
     if stdout:
-        s = stdout
+        s = stdout[:-1]
         # s.replace('\n','<br>')
         return s
     else:
@@ -146,19 +146,31 @@ def Submit(code,language,problem_id,user_id):
     
     for input_ in test_cases:
         Result = Run(code, language,input_.input)
-        # print(Result['result'][:-1].encode('utf-8') == input_.output.encode('utf-8'))
+        # print(input_.output.encode('utf-8'))
         input_.output = input_.output.encode('utf-8')
-        # print(Result['result'][:-1].encode('utf-8'))
-        Result['result'] = Result['result'][:-1].encode('utf-8')
-        if Result['result'] == input_.output and Result['run_time'] <= problem.time_limit:
+        # print(Result['result'][:].encode('utf-8'))
+        result_ = Result['result']
+        Result['result'] = Result['result'][:].encode('utf-8')
+        if 'Error' in result_:
+            out = 'Runtime Error in test case ' + str(len(test_cases) - length_test_cases) + '\n' + result_
+        elif Result['result'] == input_.output and Result['run_time'] <= problem.time_limit:
             length_test_cases -= 1
         elif Result['result'] == input_.output and Result['run_time'] > problem.time_limit:
-            out = 'Time Limit Exceeded on test case ' + str(input_.id)
+            out = 'Time Limit Exceeded on test case ' + str(len(test_cases) - length_test_cases)
         else:
-            out = 'Wrong Answer on test case ' + str(input_.id)
+            out = 'Wrong Answer on test case ' + str(len(test_cases) - length_test_cases) 
             break
     if length_test_cases == 0:
         out = 'Accepted'
+        solved = user.solved +1
+        score = user.score + problem.score
+        user.solved = solved
+        user.score = score
+        user.save()
+
+
+    submission = Submissions.objects.create(user=user,problem=problem,language=language,result=out,previous_submission=code)
+    submission.save()
 
     return out
     

@@ -14,7 +14,14 @@
 </div>
 <div class="Question-view">
     <div class="Question-title">
-        <h1>{{data.title}}</h1><br>
+        <ul>
+            <li>
+                <h1>{{data.title}}</h1><br>
+            </li>
+            <li>
+                <a href="{% url 'submissions' data.id %}" class = 'button button1'>Submissions for this problem</a>
+            </li>
+        </ul>
     </div>
     <div class="Question-content">
         <p>{{data.description|safe}}</p>

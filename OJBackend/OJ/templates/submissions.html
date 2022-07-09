@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+
+
+{% block content %}
+<div class="nav">
+    <ul class = 'left'>
+        <li><i class="fa fa-square" style="font-size:40px;color:rgb(255, 255, 255)">OnlineJudge</i></li>
+        <li><a href= '{% url "home"%}'><h3>Home</h3></a></li>
+        <li><a href= '{% url "problem_view" problem_id%}'><h3>Problem Page</h3></a></li>
+    </ul>
+    <ul class="right">
+        <li><a href= '{% url "logout"%}'><h3>Logout</h3></a></li>
+        <!-- <li><a href= '{% url "register"%}'><h3>Register</h3></a></li> -->
+        
+    </ul>
+</div>
+<style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 80px;
+      width:80%;
+      box-shadow: 20px 20px 50px grey;
+      margin-left: 170px;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+    </style>
+    </head>
+    <body>
+    
+        
+    <table id="customers">
+       <tr>
+        <th>User Name</th>
+        <th>Result</th>
+        <th>Language</th>
+        <th>Submitted At</th>
+      </tr>
+      {%for item in data%}
+      <tr>
+        <td>{{item.user.username}}</td>
+        <td>{{item.result}}</td>
+        <td>{{item.language}}</td>
+        <td>{{item.date_created}}</td>
+      </tr>
+       {%endfor%}
+    </table>
+{% endblock %}

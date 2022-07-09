@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 import requests
+from .models import Submissions,Problem,TestCases,User
 
 from django.views.decorators.csrf import csrf_protect
 
@@ -52,4 +53,14 @@ def problem_view(request,id):
 @login_required(login_url='login')
 def ide(request,problem_id):
     user_id = request.user.id
+    problem = Problem.objects.get(id=problem_id)
+    user = User.objects.get(id=user_id)
+    # previous = Submissions.objects.filter(user=user,problem=problem)[0]
+    # print(previous.previous_submission)
     return render(request,'ide.html',{'problem_id':problem_id,'user_id':user_id})
+
+@login_required(login_url='login')
+def submissions(request,id):
+    problem = Problem.objects.get(id=id)
+    sub = Submissions.objects.filter(problem=problem)
+    return render(request,'submissions.html',{'data':sub,'problem_id':id})

@@ -53,11 +53,16 @@ class TestCases(models.Model):
         return self.problem.title + 'testcases set ' + str(self.id)
 
 class Submissions(models.Model):
+    
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     result = models.CharField(max_length=200)
     previous_submission = models.TextField(null=True, blank=True)
+    language = models.CharField(max_length=10,null=True, blank=True)
+
+    class Meta:
+        ordering = ['-date_created']
 
 class Code(models.Model):
     code = models.TextField()

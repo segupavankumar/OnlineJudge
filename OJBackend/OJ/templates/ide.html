@@ -6,6 +6,7 @@
     <ul class = 'left'>
         <li><i class="fa fa-square" style="font-size:40px;color:rgb(255, 255, 255)">OnlineJudge</i></li>
         <li><a href= '{% url "home"%}'><h3>Home</h3></a></li>
+        <li><a href= '{% url "problem_view" problem_id%}'><h3>Problem Page</h3></a></li>
     </ul>
     <ul class="right">
         <li><a href= '{% url "logout"%}'><h3>Logout</h3></a></li>
@@ -54,10 +55,12 @@
     // const element = document.getElementById("editor");
     // console.log(element)
     document.getElementById('editor').style.fontSize='16px';
+    
     window.onload = function() {
         editor = ace.edit("editor");
         editor.setTheme("ace/theme/twilight");
-        editor.session.setMode("ace/mode/c_cpp");
+        editor.session.setMode("ace/mode/python");
+        //editor.insert("{{previous.previous_submission}}");
     }
     
     console.log("Hello World!");

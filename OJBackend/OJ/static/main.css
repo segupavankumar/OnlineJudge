@@ -253,3 +253,13 @@ textarea{
     margin-bottom: 20px;
     border: none;
 }
+
+.Question-title ul{
+    display: flex;
+    justify-content:space-around;
+    list-style-type: none;
+}
+
+.Question-title ul li{
+    padding:0 15px;
+}
