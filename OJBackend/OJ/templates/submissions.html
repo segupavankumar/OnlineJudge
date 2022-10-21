@@ -54,12 +54,22 @@
         <th>Submitted At</th>
       </tr>
       {%for item in data%}
+      {%if item.result != "Accepted"%}
+      <tr style='background-color:#FFCCCB'>
+        <td>{{item.user.username}}</td>
+        <td>{{item.result}}</td>
+        <td>{{item.language}}</td>
+        <td>{{item.date_created}}</td>
+      </tr>
+      {%else%}
       <tr>
         <td>{{item.user.username}}</td>
         <td>{{item.result}}</td>
         <td>{{item.language}}</td>
         <td>{{item.date_created}}</td>
       </tr>
+      {%endif%}
+
        {%endfor%}
     </table>
 {% endblock %}
