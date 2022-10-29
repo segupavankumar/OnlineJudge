@@ -16,6 +16,20 @@
 ## Live Demo of my project
 
   https://user-images.githubusercontent.com/62418622/198820546-87f24192-ef6e-45e4-b75f-89c8b2f79241.mp4
+  
+## Installing project
+
+### Install a virtual ennvironment
+>pip install virtualenv
+
+### Create a virtual environment
+>python -m venv name-of-virtual-environment<br>
+>name-of-virtual-environment\Scripts\activate use this on cmd to activate virtualenv
+
+### Installing requirements
+
+>Use pip install -r requirements.txt<br>
+>Make sure that pip and python version is >=3.0
 
 
   
