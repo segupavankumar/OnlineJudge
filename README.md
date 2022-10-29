@@ -15,7 +15,7 @@
  
 ## Live Demo of my project
 
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/62418622/198820546-87f24192-ef6e-45e4-b75f-89c8b2f79241.mp4)
+https://user-images.githubusercontent.com/62418622/198820546-87f24192-ef6e-45e4-b75f-89c8b2f79241.mp4
   
 ## Installing project
 
