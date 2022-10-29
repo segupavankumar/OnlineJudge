@@ -64,6 +64,9 @@ class Submissions(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+    def __str__(self):
+        return self.problem.title +'---' +self.user.username + "---"+self.result[:9]
+
 class Code(models.Model):
     code = models.TextField()
     language = models.CharField(max_length=10)

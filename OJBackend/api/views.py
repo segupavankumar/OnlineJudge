@@ -67,6 +67,7 @@ def Code_post(request):
             else:
                 output = Submit(serializer.data['code'],serializer.data['language'],serializer.data['problem_id'],serializer.data['user_id'])
                 # output['result'] = output['result'].replace('\n','<br>')
+                print(output)
             return Response(output, status=201)
         return Response(serializer.errors, status=400)
 

@@ -29,11 +29,11 @@ def run_c(code,input_):
     file = open(file_name, 'w')
     file.write(code)
     file.close()
-
+    # strt = time.time()
     subprocess.run(["gcc", file_name])
     # f = open('a.txt','w')
-    f = subprocess.run("a",input = input_,encoding="utf-8",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-    # print(f)
+    f = subprocess.run("a.exe",input = input_,encoding="utf-8",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    # print(time.time()-strt)
     # f.close()
     # f = open('a.txt', 'r')
     # output = f.stdout
@@ -56,9 +56,11 @@ def run_cpp(code,input_):
     file.close()
 
     # Run the code
+    # strt = time.time()
     process = subprocess.run(['g++', file_name] )
     # f = open('a.txt','w')
-    f = subprocess.run("a",input = input_,encoding="utf-8",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    f = subprocess.run("a.exe",input = input_,encoding="utf-8",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    # print(time.time()-strt)
     # f.close()
     # f = open('a.txt', 'r')
     # output = f.read()
